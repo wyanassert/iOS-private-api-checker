@@ -221,11 +221,13 @@ def intersection_api(apis_1, apis_2):
         in apis_1, also in apis_2 
     '''
     apis = []
-    apis_1_dict = _apis_2_dict(apis_1)
+    apis_1_dict = []
+    for tmp_api in apis_1:
+        apis_1_dict.append(tmp_api['api_name'])
 
     for api in apis_2:
-        api_hash = api['api_name'] + '/' + api['class_name']
-        if apis_1_dict.get(api_hash, None):
+        api_hash = api['api_name']
+        if api_hash in apis_1_dict:
             apis.append(api)
 
     return apis
