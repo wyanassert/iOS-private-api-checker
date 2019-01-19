@@ -71,7 +71,7 @@ def check_architectures(app):
 
 
 if __name__ == '__main__':
-    ipa_path = "/Users/summer-wj/code/svn/ljsg_for_netease_20150928_resign.ipa"
+    ipa_path = "/Users/wyan/Downloads/TagMaster 2019-01-17 15-49-59/TagMaster.ipa"
 #     cur_dir = os.getcwd()
 #     dest = os.path.join(cur_dir, 'tmp')
 #     app_path = app_utils.unzip_ipa(ipa_path, dest)

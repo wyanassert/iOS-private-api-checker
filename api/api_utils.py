@@ -10,6 +10,7 @@ import api
 from api import api_helpers
 from dump import class_dump_utils
 from itertools import groupby
+import json
 
 def framework_dump_apis(sdk, framework_folder):
     '''
@@ -225,10 +226,18 @@ def intersection_api(apis_1, apis_2):
     for tmp_api in apis_1:
         apis_1_dict.append(tmp_api['api_name'])
 
+    cur_dir = os.getcwd()
+    filter_json_path = os.path.join(cur_dir, "filter.json")
+    filter_array = []
+    with open(filter_json_path) as f:
+        data = json.load(f)
+        filter_array = data.keys()
+
     for api in apis_2:
         api_hash = api['api_name']
         if api_hash in apis_1_dict:
-            apis.append(api)
+            if not api_hash in filter_array:
+                apis.append(api)
 
     return apis
 
