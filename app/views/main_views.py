@@ -63,6 +63,9 @@ def ipa_post():
         os.remove(ipa_path) #删除上传的包
 
     cur_dir = os.getcwd() #删除检查临时目录
+    print "tmp dir:", os.path.isdir(os.path.join(cur_dir, "tmp"))
+    if not os.path.isdir(os.path.join(cur_dir, "tmp")):
+        os.makedirs(os.path.join(cur_dir, "tmp"))
     dest_tmp = os.path.join(cur_dir, 'tmp/' + pid)
     if os.path.exists(dest_tmp):
         shutil.rmtree(dest_tmp)

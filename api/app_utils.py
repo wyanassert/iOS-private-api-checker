@@ -56,6 +56,8 @@ def get_app_strings(app_path, pid):
     
     strings_file_name  = 'strings_' + os.path.basename(app_path) or 'strings'
     cur_dir = os.getcwd()
+    if not os.path.isdir(os.path.join(cur_dir, "tmp")):
+        os.makedirs(os.path.join(cur_dir, "tmp"))
     strings_file_name = os.path.join(cur_dir, "tmp/" + pid + '/' + strings_file_name)
     
 
