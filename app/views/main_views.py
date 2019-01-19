@@ -18,6 +18,10 @@ def index_page():
 
 
 allow_ext = ['ipa']
+cur_dir = os.getcwd() #删除检查临时目录
+print "tmp dir:", os.path.isdir(os.path.join(cur_dir, "tmp"))
+if not os.path.isdir(os.path.join(cur_dir, "tmp")):
+    os.makedirs(os.path.join(cur_dir, "tmp"))
 #ipa上传
 @app.route('/ipa_post', methods=['POST'])
 def ipa_post():
@@ -62,10 +66,6 @@ def ipa_post():
     if ipa_path and os.path.exists(ipa_path):
         os.remove(ipa_path) #删除上传的包
 
-    cur_dir = os.getcwd() #删除检查临时目录
-    print "tmp dir:", os.path.isdir(os.path.join(cur_dir, "tmp"))
-    if not os.path.isdir(os.path.join(cur_dir, "tmp")):
-        os.makedirs(os.path.join(cur_dir, "tmp"))
     dest_tmp = os.path.join(cur_dir, 'tmp/' + pid)
     if os.path.exists(dest_tmp):
         shutil.rmtree(dest_tmp)
